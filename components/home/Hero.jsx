@@ -9,7 +9,7 @@ const titleChars = [
 
 export default function Hero() {
   return (
-    <section className="hero">
+    <section className="hero" id="top">
       <Dots count={7} />
 
       <div className="hero__inner">

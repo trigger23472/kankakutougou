@@ -3,6 +3,7 @@ import SunSymbol from '../components/SunSymbol';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DeadLinkGuard from '../components/DeadLinkGuard';
+import MobileTabBar from '../components/MobileTabBar';
 import './globals.css';
 
 // 日本語フォントはサブセット指定ができないため preload: false で読み込む
@@ -15,6 +16,13 @@ export const metadata = {
   description: '感覚統合 × あそび × こどもの成長。感覚統合を通して、子どもたちの「やってみたい！」を応援します。',
 };
 
+// viewportFit: 'cover' で iPhone のホームバー領域を env(safe-area-inset-bottom) で扱えるようにする
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ja" className={`${rounded.variable} ${maru.variable} ${klee.variable}`}>
@@ -23,6 +31,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <Footer />
+        <MobileTabBar />
         <DeadLinkGuard />
       </body>
     </html>

@@ -25,7 +25,7 @@ const targets = [
 
 export default function AgesSection() {
   return (
-    <section className="section section--ages">
+    <section className="section section--ages" id="ages">
       <div className="container">
         <div className="sec-head">
           <Backpack className="sec-icon" />

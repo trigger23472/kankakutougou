@@ -99,6 +99,7 @@ svg.lucide{stroke-width:2}
 
 /* ---------- Section common ---------- */
 .section{position:relative;padding:40px 0 60px}
+.hero,.section{scroll-margin-top:84px}
 .section--tint{background:linear-gradient(180deg,var(--bg-tint),#fff)}
 .sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}
 .sec-head--center{flex-direction:column;align-items:center;text-align:center}
@@ -118,6 +119,7 @@ svg.lucide{stroke-width:2}
 .more--abs{position:absolute;right:24px;top:0}
 
 /* ---------- Senses ---------- */
+.section--senses{overflow-x:clip}
 .section--senses .container{position:relative}
 .section--senses > .dot:nth-of-type(1){width:26px;height:26px;left:3%;top:40px}
 .section--senses > .dot:nth-of-type(2){width:22px;height:22px;left:5%;top:110px;background:#fbcfd9}
@@ -220,6 +222,9 @@ svg.lucide{stroke-width:2}
 .pagetop{margin-left:auto;display:flex;flex-direction:column;align-items:center;font-size:9px;color:var(--muted);letter-spacing:.05em}
 .pagetop svg{width:18px;height:18px}
 
+/* ---------- Mobile tab bar（components/MobileTabBar.jsx、600px 以下のみ表示） ---------- */
+.tabbar{display:none}
+
 /* ---------- Responsive ---------- */
 @media (max-width:1100px){
   .nav ul{gap:18px}
@@ -242,27 +247,102 @@ svg.lucide{stroke-width:2}
   .targets{grid-template-columns:1fr}
   .footer__inner{flex-wrap:wrap}
 }
+/* スマホ専用レイアウト：コンパクトなヘッダー、下部タブバー、横長リスト型のカード */
 @media (max-width:600px){
   .container,.header__inner,.hero__inner,.footer__inner{padding-left:16px;padding-right:16px}
-  .logo__sun{width:42px;height:42px}
-  .logo__name{font-size:20px}
-  .logo__sub{font-size:9px}
-  .hero__note{font-size:14px;right:0;top:40px}
+  .hero,.section{scroll-margin-top:62px}
+
+  /* Header：メニューは 2 列のタイル */
+  .header__inner{gap:8px;padding-top:8px;padding-bottom:8px}
+  .logo{gap:8px}
+  .logo__sun{width:38px;height:38px}
+  .logo__name{font-size:19px}
+  .logo__sub{font-size:9px;margin-top:2px}
+  .menu-btn,.search-btn{width:40px;height:40px}
+  .search-btn svg{width:20px;height:20px}
+  .nav.is-open{max-height:calc(100vh - 56px);overflow-y:auto}
+  .nav.is-open ul{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px 18px}
+  .nav.is-open a{padding:12px 14px;font-size:13px;border:none;border-radius:12px;background:var(--bg-tint)}
+  .nav.is-open a.is-current{background:var(--blue-soft)}
+
+  /* Hero：写真を小さくし、ボタンは縦に並べて全幅 */
+  .hero{min-height:0}
+  .hero__inner{padding-top:12px;padding-bottom:56px;gap:4px}
+  .hero__visual{height:220px}
+  .hero__photo .photo-ph{font-size:120px}
+  .hero__note{font-size:12px;right:0;top:18px}
   .hero__cloud,.hero__flowers{display:none}
-  .btn{min-width:0;flex:1}
-  .sec-head{flex-wrap:wrap}
-  .more--abs{position:static;margin:14px auto 0}
-  .sec-head .more{margin-left:0}
-  .senses{gap:14px}
-  .sense{padding:56px 12px 18px}
-  .worries{grid-template-columns:repeat(2,1fr)}
-  .fish-banner{min-height:190px}
-  .fish-banner .bubble-say{left:14px;width:110px;height:92px;font-size:16px}
-  .fish-banner .bubble-say b{font-size:21px}
-  .fish-banner .play-now{left:auto;right:14px}
-  .ages{grid-template-columns:1fr 1fr;gap:12px}
-  .age{font-size:14px;padding:0 14px}
-  .age .kid{font-size:44px}
-  .target{flex-direction:column}
-  .target__photo{width:100%;height:120px;-webkit-mask-image:none;mask-image:none}
+  .hero__title{font-size:30px;margin-bottom:16px}
+  .hero__lead{font-size:13px;line-height:1.9;margin-bottom:20px}
+  .hero__btns{flex-direction:column;gap:10px}
+  .btn{width:100%;min-width:0;padding:13px 20px 13px 26px}
+  .hero__wave{height:60px}
+
+  /* Section common：アイコン＋見出しを横並び、「詳しく見る」はその下 */
+  .section{padding:32px 0 40px}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px 12px;margin-bottom:20px}
+  .sec-head--center{display:flex}
+  .sec-title{font-size:19px;letter-spacing:.06em}
+  .sec-title--sm{font-size:18px}
+  .sec-lead{font-size:12px;line-height:1.8}
+  .sec-lead br{display:none}
+  .sec-icon{width:26px;height:26px}
+  .sec-icon--lg{width:34px;height:34px}
+  .worry-face{width:46px;height:46px}
+  .sec-head .more{grid-column:1/-1;justify-self:start;margin-left:0}
+  .more--abs{position:static;margin:4px auto 0}
+
+  /* Senses：アイコン左・テキスト右の 1 列リスト */
+  .section--senses > .dot{display:none}
+  .senses{grid-template-columns:1fr;gap:10px;margin-top:0}
+  .sense{display:grid;grid-template-columns:52px 1fr auto;grid-template-areas:"icon title link" "icon text link";align-items:center;column-gap:14px;margin-top:0;padding:14px 14px 14px 16px;text-align:left}
+  .sense__icon{grid-area:icon;position:static;transform:none;width:52px;height:52px}
+  .sense__icon svg{width:28px;height:28px}
+  .sense h3{grid-area:title;font-size:15px;margin:0;align-self:end}
+  .sense p{grid-area:text;font-size:11.5px;margin:0;align-self:start}
+  .sense p br{display:none}
+  .sense .link{grid-area:link;font-size:0}
+  .sense .link svg{width:18px;height:18px;color:var(--muted)}
+
+  /* Worries：3 列の小さなアイコン */
+  .worries{grid-template-columns:repeat(3,1fr);gap:18px 8px}
+  .worry__icon{width:64px;height:64px;margin-bottom:6px}
+  .worry__icon svg{width:30px;height:30px}
+  .worry span{display:block;font-size:11px;line-height:1.5}
+
+  /* Play */
+  .section--play{padding-top:20px}
+  .play-grid{gap:12px}
+  .fish-banner{min-height:170px}
+  .fish-banner .bubble-say{left:14px;width:106px;height:88px;font-size:15px}
+  .fish-banner .bubble-say b{font-size:20px}
+  .fish-banner .play-now{left:auto;right:14px;bottom:14px}
+  .play-list a{padding:10px 16px 10px 10px;font-size:13px}
+
+  /* Age / Target：対象者カードは写真を右側に小さく */
+  .section--ages{padding-top:24px}
+  .ages{grid-template-columns:1fr 1fr;gap:10px}
+  .age{height:60px;font-size:14px;padding:0 14px}
+  .age .kid{font-size:40px;right:10px}
+  .targets{gap:12px;margin-top:16px}
+  .target{min-height:120px}
+  .target__body{padding:14px 4px 14px 16px}
+  .target p{margin:4px 0 10px;font-size:11px}
+  .target p br{display:none}
+  .target .more{margin-left:0}
+  .target__photo{width:34%}
+  .target__photo .photo-ph{font-size:44px}
+
+  /* Footer：タブバーの分だけ下に余白 */
+  .footer{margin-top:10px;padding-bottom:calc(60px + env(safe-area-inset-bottom))}
+  .footer__inner{flex-direction:column;gap:16px;padding-bottom:20px}
+  .footer nav ul{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;font-size:12px}
+  .pagetop{margin-left:0}
+
+  /* Tab bar */
+  .tabbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:0 -1px 0 var(--line),0 -6px 16px rgba(60,110,160,.06);padding-bottom:env(safe-area-inset-bottom)}
+  .tabbar ul{display:grid;grid-template-columns:repeat(5,1fr);list-style:none}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 7px;font-size:10px;font-weight:500;line-height:1.2;color:var(--muted)}
+  .tabbar svg{width:22px;height:22px}
+  .tabbar a.is-current{color:var(--blue)}
 }

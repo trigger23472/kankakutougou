@@ -11,7 +11,7 @@ const senses = [
 
 export default function SensesSection() {
   return (
-    <section className="section section--senses">
+    <section className="section section--senses" id="senses">
       <span className="dot dot--solid dot--ring" />
       <Dots count={3} className="dot dot--solid" />
       <div className="container">

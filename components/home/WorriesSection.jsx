@@ -25,7 +25,7 @@ function WorryFace() {
 
 export default function WorriesSection() {
   return (
-    <section className="section section--tint">
+    <section className="section section--tint" id="worries">
       <div className="container">
         <div className="sec-head">
           <WorryFace />

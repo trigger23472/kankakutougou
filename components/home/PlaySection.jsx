@@ -10,7 +10,7 @@ const plays = [
 
 export default function PlaySection() {
   return (
-    <section className="section section--tint section--play">
+    <section className="section section--tint section--play" id="play">
       <div className="container">
         <div className="sec-head">
           <Gamepad2 className="sec-icon sec-icon--lg" />
