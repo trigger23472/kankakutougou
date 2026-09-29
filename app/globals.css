@@ -30,7 +30,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:"M PLUS Rounded 1c","Zen Maru Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;overflow-x:hidden}
+body{font-family:var(--font-rounded),var(--font-maru),sans-serif;color:var(--text);background:var(--bg);line-height:1.8;overflow-x:hidden}
 h1,h2,h3,h4,h5,h6,strong,b,th{font-weight:500}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -43,7 +43,7 @@ svg.lucide{stroke-width:2}
 .dot--solid{filter:none;opacity:1}
 .dot--ring{background:none;border:4px solid var(--dot-blue)}
 
-/* 画像未配置時のプレースホルダ（js/main.js で <img data-fallback> と差し替え） */
+/* 画像未配置時のプレースホルダ（components/FallbackImage.jsx が表示） */
 .photo-ph{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#fff5e6 0%,#fde9d6 35%,#f5f0e8 60%,transparent 75%);font-size:180px}
 
 /* ---------- Header ---------- */
@@ -51,7 +51,7 @@ svg.lucide{stroke-width:2}
 .header__inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:14px 24px}
 .logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .logo__sun{width:54px;height:54px}
-.logo__name{font-family:"Zen Maru Gothic";font-weight:500;font-size:26px;line-height:1.1;letter-spacing:.04em}
+.logo__name{font-family:var(--font-maru);font-weight:500;font-size:26px;line-height:1.1;letter-spacing:.04em}
 .logo__name span:nth-child(1){color:var(--teal)}
 .logo__name span:nth-child(2){color:var(--green)}
 .logo__name span:nth-child(3){color:var(--yellow)}
@@ -78,7 +78,7 @@ svg.lucide{stroke-width:2}
 .hero > .dot:nth-of-type(6){width:130px;height:130px;right:-40px;top:220px;background:var(--dot-yellow)}
 .hero > .dot:nth-of-type(7){width:60px;height:60px;left:4%;top:180px;background:var(--dot-blue)}
 .hero__inner{position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;align-items:center;padding:40px 24px 90px;gap:20px;z-index:2}
-.hero__title{font-family:"Zen Maru Gothic";font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.4;letter-spacing:.06em;margin-bottom:28px}
+.hero__title{font-family:var(--font-maru);font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.4;letter-spacing:.06em;margin-bottom:28px}
 .hero__title .l1{display:block;color:var(--blue);transform:rotate(-4deg);transform-origin:left}
 .hero__title .l2{display:block;padding-left:.35em;transform:rotate(-4deg);transform-origin:left}
 .hero__lead{font-size:15px;color:var(--text);margin-bottom:30px;line-height:2}
@@ -91,7 +91,7 @@ svg.lucide{stroke-width:2}
 .hero__visual{position:relative;height:440px}
 .hero__photo{position:absolute;inset:0;overflow:hidden}
 .hero__photo img{width:100%;height:100%;object-fit:cover}
-.hero__note{position:absolute;right:10px;top:70px;font-family:"Klee One",cursive;color:var(--ink);font-size:17px;line-height:1.9;transform:rotate(-14deg);z-index:3;text-shadow:0 0 8px #fff}
+.hero__note{position:absolute;right:10px;top:70px;font-family:var(--font-klee),cursive;color:var(--ink);font-size:17px;line-height:1.9;transform:rotate(-14deg);z-index:3;text-shadow:0 0 8px #fff}
 .hero__cloud{position:absolute;right:40px;top:6px;width:110px;z-index:3}
 .hero__flowers{position:absolute;right:60px;bottom:50px;width:90px;z-index:3}
 .hero__wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:110px;z-index:1}
@@ -101,7 +101,7 @@ svg.lucide{stroke-width:2}
 .section--tint{background:linear-gradient(180deg,var(--bg-tint),#fff)}
 .sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}
 .sec-head--center{flex-direction:column;align-items:center;text-align:center}
-.sec-title{font-family:"Zen Maru Gothic";font-size:24px;font-weight:500;color:var(--ink);letter-spacing:.1em;position:relative;display:inline-block}
+.sec-title{font-family:var(--font-maru);font-size:24px;font-weight:500;color:var(--ink);letter-spacing:.1em;position:relative;display:inline-block}
 .sec-title::after{content:"";position:absolute;right:-18px;top:-4px;width:14px;height:14px;background:
   linear-gradient(60deg,transparent 45%,var(--teal) 45%,var(--teal) 55%,transparent 55%) 0 0/7px 14px no-repeat,
   linear-gradient(80deg,transparent 45%,var(--teal) 45%,var(--teal) 55%,transparent 55%) 7px 0/7px 14px no-repeat}
@@ -158,7 +158,7 @@ svg.lucide{stroke-width:2}
 .play-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:stretch}
 .fish-banner{position:relative;border-radius:14px;overflow:hidden;min-height:150px;box-shadow:var(--shadow);cursor:pointer}
 .fish-banner svg.sea{position:absolute;inset:0;width:100%;height:100%}
-.fish-banner .bubble-say{position:absolute;left:34px;top:50%;transform:translateY(-50%);background:#fff;border-radius:50%;width:130px;height:106px;display:grid;place-items:center;text-align:center;font-family:"Zen Maru Gothic";font-weight:500;color:var(--ink);font-size:20px;line-height:1.35;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.fish-banner .bubble-say{position:absolute;left:34px;top:50%;transform:translateY(-50%);background:#fff;border-radius:50%;width:130px;height:106px;display:grid;place-items:center;text-align:center;font-family:var(--font-maru);font-weight:500;color:var(--ink);font-size:20px;line-height:1.35;box-shadow:0 4px 10px rgba(0,0,0,.08)}
 .fish-banner .bubble-say::after{content:"";position:absolute;right:-8px;bottom:18px;border:10px solid transparent;border-left:16px solid #fff;transform:rotate(20deg)}
 .fish-banner .bubble-say b{font-size:26px;display:block}
 .fish-banner .play-now{position:absolute;left:36%;bottom:16px;display:inline-flex;align-items:center;gap:18px;background:var(--pink);color:#fff;font-weight:500;font-size:13px;padding:9px 18px 9px 26px;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.12)}
