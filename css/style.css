@@ -1,0 +1,267 @@
+:root{
+  --ink:#2b4a6b;
+  --text:#4a5563;
+  --muted:#6b7684;
+  --blue:#3d9bd8;
+  --blue-soft:#e8f4fc;
+  --blue-deep:#2b76b9;
+  --pink:#f47a9a;
+  --pink-soft:#fdeef2;
+  --pink-deep:#e0557a;
+  --green:#5cb87a;
+  --green-soft:#eaf6ec;
+  --green-deep:#3b9657;
+  --yellow:#f3b92e;
+  --yellow-soft:#fff7df;
+  --purple:#9b7fd4;
+  --purple-soft:#f1ecfb;
+  --purple-deep:#7e5fc4;
+  --teal:#5cc6c8;
+  --teal-deep:#2ea5a8;
+  --orange:#f39a3d;
+  --dot-yellow:#fde68a;
+  --dot-blue:#bfe3f7;
+  --dot-green:#bbe5c6;
+  --bg:#ffffff;
+  --bg-tint:#f4f9fd;
+  --line:#e3edf5;
+  --radius:22px;
+  --shadow:0 6px 20px rgba(60,110,160,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"M PLUS Rounded 1c","Zen Maru Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6,strong,b,th{font-weight:500}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+svg.lucide{stroke-width:2}
+.c-o{color:var(--orange)}.c-y{color:var(--yellow)}.c-g{color:var(--green)}.c-t{color:var(--teal)}.c-p{color:var(--pink)}.c-b{color:var(--blue)}
+
+/* 背景の水玉。位置・サイズ・色は各セクションで指定 */
+.dot{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;pointer-events:none}
+.dot--solid{filter:none;opacity:1}
+.dot--ring{background:none;border:4px solid var(--dot-blue)}
+
+/* 画像未配置時のプレースホルダ（js/main.js で <img data-fallback> と差し替え） */
+.photo-ph{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#fff5e6 0%,#fde9d6 35%,#f5f0e8 60%,transparent 75%);font-size:180px}
+
+/* ---------- Header ---------- */
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line)}
+.header__inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:14px 24px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo__sun{width:54px;height:54px}
+.logo__name{font-family:"Zen Maru Gothic";font-weight:500;font-size:26px;line-height:1.1;letter-spacing:.04em}
+.logo__name span:nth-child(1){color:var(--teal)}
+.logo__name span:nth-child(2){color:var(--green)}
+.logo__name span:nth-child(3){color:var(--yellow)}
+.logo__name span:nth-child(4){color:var(--pink)}
+.logo__name span:nth-child(5){color:var(--blue)}
+.logo__name span:nth-child(6){color:var(--purple)}
+.logo__sub{font-size:11px;color:var(--ink);font-weight:500;letter-spacing:.08em;margin-top:4px}
+.nav{margin-left:auto}
+.nav ul{display:flex;gap:28px;list-style:none}
+.nav a{font-size:13px;font-weight:500;color:var(--ink);padding:6px 0;position:relative;white-space:nowrap}
+.nav a.is-current{color:var(--blue)}
+.nav a.is-current::after,.nav a:hover::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;border-radius:2px;background:var(--blue)}
+.search-btn{width:44px;height:44px;border-radius:50%;border:none;background:var(--teal);color:#fff;display:grid;place-items:center;cursor:pointer;flex-shrink:0;transition:transform .2s}
+.search-btn:hover{transform:scale(1.06)}
+.menu-btn{display:none;background:none;border:none;color:var(--ink);cursor:pointer}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#fdfbf5 0%,#f7fbfd 100%);min-height:520px}
+.hero > .dot:nth-of-type(1){width:140px;height:140px;left:-40px;top:20px;background:var(--dot-yellow)}
+.hero > .dot:nth-of-type(2){width:90px;height:90px;left:22%;top:-30px;background:var(--dot-blue)}
+.hero > .dot:nth-of-type(3){width:120px;height:120px;left:-50px;top:260px;background:var(--dot-green)}
+.hero > .dot:nth-of-type(4){width:70px;height:70px;left:38%;top:30px;background:#cdeccd}
+.hero > .dot:nth-of-type(5){width:110px;height:110px;right:-30px;top:10px;background:var(--dot-green)}
+.hero > .dot:nth-of-type(6){width:130px;height:130px;right:-40px;top:220px;background:var(--dot-yellow)}
+.hero > .dot:nth-of-type(7){width:60px;height:60px;left:4%;top:180px;background:var(--dot-blue)}
+.hero__inner{position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;align-items:center;padding:40px 24px 90px;gap:20px;z-index:2}
+.hero__title{font-family:"Zen Maru Gothic";font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.4;letter-spacing:.06em;margin-bottom:28px}
+.hero__title .l1{display:block;color:var(--blue);transform:rotate(-4deg);transform-origin:left}
+.hero__title .l2{display:block;padding-left:.35em;transform:rotate(-4deg);transform-origin:left}
+.hero__lead{font-size:15px;color:var(--text);margin-bottom:30px;line-height:2}
+.hero__btns{display:flex;gap:18px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:176px;padding:14px 22px 14px 32px;border-radius:999px;color:#fff;font-weight:500;font-size:14px;box-shadow:0 6px 14px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.12)}
+.btn--blue{background:var(--blue)}
+.btn--pink{background:var(--pink)}
+.btn svg{width:16px;height:16px}
+.hero__visual{position:relative;height:440px}
+.hero__photo{position:absolute;inset:0;overflow:hidden}
+.hero__photo img{width:100%;height:100%;object-fit:cover}
+.hero__note{position:absolute;right:10px;top:70px;font-family:"Klee One",cursive;color:var(--ink);font-size:17px;line-height:1.9;transform:rotate(-14deg);z-index:3;text-shadow:0 0 8px #fff}
+.hero__cloud{position:absolute;right:40px;top:6px;width:110px;z-index:3}
+.hero__flowers{position:absolute;right:60px;bottom:50px;width:90px;z-index:3}
+.hero__wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:110px;z-index:1}
+
+/* ---------- Section common ---------- */
+.section{position:relative;padding:40px 0 60px}
+.section--tint{background:linear-gradient(180deg,var(--bg-tint),#fff)}
+.sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}
+.sec-head--center{flex-direction:column;align-items:center;text-align:center}
+.sec-title{font-family:"Zen Maru Gothic";font-size:24px;font-weight:500;color:var(--ink);letter-spacing:.1em;position:relative;display:inline-block}
+.sec-title::after{content:"";position:absolute;right:-18px;top:-4px;width:14px;height:14px;background:
+  linear-gradient(60deg,transparent 45%,var(--teal) 45%,var(--teal) 55%,transparent 55%) 0 0/7px 14px no-repeat,
+  linear-gradient(80deg,transparent 45%,var(--teal) 45%,var(--teal) 55%,transparent 55%) 7px 0/7px 14px no-repeat}
+.sec-title--sm{font-size:20px}
+.sec-lead{font-size:13px;color:var(--text);margin-top:10px;line-height:1.9}
+.sec-lead--tight{margin-top:4px}
+.sec-lead--flush{margin-top:0}
+.sec-icon{width:30px;height:30px;color:var(--blue);flex-shrink:0;margin-top:2px}
+.sec-icon--lg{width:44px;height:44px;color:var(--ink)}
+.more{margin-left:auto;display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 22px;border:1.5px solid var(--blue);color:var(--blue);border-radius:999px;font-size:12px;font-weight:500;background:#fff;white-space:nowrap;transition:background .2s,color .2s}
+.more:hover{background:var(--blue);color:#fff}
+.more svg{width:14px;height:14px}
+.more--abs{position:absolute;right:24px;top:0}
+
+/* ---------- Senses ---------- */
+.section--senses .container{position:relative}
+.section--senses > .dot:nth-of-type(1){width:26px;height:26px;left:3%;top:40px}
+.section--senses > .dot:nth-of-type(2){width:22px;height:22px;left:5%;top:110px;background:#fbcfd9}
+.section--senses > .dot:nth-of-type(3){width:26px;height:26px;right:3%;top:60px;background:var(--dot-yellow)}
+.section--senses > .dot:nth-of-type(4){width:22px;height:22px;right:5%;top:110px;background:#b6e3dc}
+.senses{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:10px}
+.sense{position:relative;padding:62px 18px 22px;border-radius:var(--radius);text-align:center;margin-top:34px;transition:transform .2s}
+.sense:hover{transform:translateY(-4px)}
+.sense__icon{position:absolute;left:50%;top:-34px;transform:translateX(-50%);width:74px;height:74px;border-radius:50%;display:grid;place-items:center}
+.sense__icon svg{width:38px;height:38px}
+.sense h3{font-size:17px;font-weight:500;color:#333;margin-bottom:8px}
+.sense p{font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.sense .link{font-size:12px;font-weight:500;color:#444;display:inline-flex;align-items:center;gap:4px}
+.sense .link svg{width:13px;height:13px}
+.sense--pink{background:var(--pink-soft)} .sense--pink .sense__icon{background:#fbd3dd;color:var(--pink-deep)}
+.sense--blue{background:var(--blue-soft)} .sense--blue .sense__icon{background:#c9e5f7;color:#1f5f8f}
+.sense--green{background:var(--green-soft)} .sense--green .sense__icon{background:#cfeccf;color:var(--green-deep)}
+.sense--yellow{background:var(--yellow-soft)} .sense--yellow .sense__icon{background:#fde6a3;color:#d9860b}
+.sense--yellow h3{color:#8a5a00}
+
+/* ---------- Worries ---------- */
+.worry-face{width:62px;height:62px;flex-shrink:0}
+.worries{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.worry{text-align:center;transition:transform .2s}
+.worry:hover{transform:translateY(-4px)}
+.worry__icon{width:92px;height:92px;border-radius:50% 46% 52% 48%/48% 52% 46% 50%;margin:0 auto 10px;display:grid;place-items:center}
+.worry__icon svg{width:42px;height:42px}
+.worry__icon .is-tilted{transform:rotate(-35deg)}
+.worry span{font-size:13px;font-weight:500;color:var(--ink)}
+.worry__icon--blue{background:#dcecfa;color:var(--blue-deep)}
+.worry__icon--green{background:#dcf1e0;color:#3aa062}
+.worry__icon--yellow{background:#fdf1c6;color:#e0a100}
+.worry__icon--pink{background:#fde0e7;color:var(--pink-deep)}
+.worry__icon--purple{background:#e9e1f8;color:var(--purple-deep)}
+.worry__icon--teal{background:#d6f2f1;color:var(--teal-deep)}
+
+/* ---------- Play ---------- */
+.section--play{padding-top:20px}
+.play-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:stretch}
+.fish-banner{position:relative;border-radius:14px;overflow:hidden;min-height:150px;box-shadow:var(--shadow);cursor:pointer}
+.fish-banner svg.sea{position:absolute;inset:0;width:100%;height:100%}
+.fish-banner .bubble-say{position:absolute;left:34px;top:50%;transform:translateY(-50%);background:#fff;border-radius:50%;width:130px;height:106px;display:grid;place-items:center;text-align:center;font-family:"Zen Maru Gothic";font-weight:500;color:var(--ink);font-size:20px;line-height:1.35;box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.fish-banner .bubble-say::after{content:"";position:absolute;right:-8px;bottom:18px;border:10px solid transparent;border-left:16px solid #fff;transform:rotate(20deg)}
+.fish-banner .bubble-say b{font-size:26px;display:block}
+.fish-banner .play-now{position:absolute;left:36%;bottom:16px;display:inline-flex;align-items:center;gap:18px;background:var(--pink);color:#fff;font-weight:500;font-size:13px;padding:9px 18px 9px 26px;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.fish-banner .play-now svg{width:14px;height:14px}
+.fish{transform-box:fill-box;animation:swim 4s ease-in-out infinite}
+.fish:nth-of-type(2n){animation-duration:5s;animation-delay:-1s}
+.fish:nth-of-type(3n){animation-duration:6s;animation-delay:-2s}
+@keyframes swim{0%,100%{transform:translate(0,0)}50%{transform:translate(8px,-5px)}}
+.play-list{display:flex;flex-direction:column;gap:8px;list-style:none}
+.play-list a{display:flex;align-items:center;gap:14px;background:#fff;border-radius:999px;padding:8px 16px 8px 10px;box-shadow:var(--shadow);font-size:12.5px;font-weight:500;color:#3b3f45;transition:transform .2s}
+.play-list a:hover{transform:translateX(4px)}
+.play-list .ic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.play-list .ic svg{width:18px;height:18px}
+.play-list .ic--blue{background:#e8f0fb;color:#3d6fd8}
+.play-list .ic--green{background:var(--green-soft);color:var(--green-deep)}
+.play-list .ic--teal{background:#e3f5f5;color:var(--teal-deep)}
+.play-list .chev{margin-left:auto;width:16px;height:16px;color:#888}
+
+/* ---------- Age ---------- */
+.section--ages{padding-top:26px}
+.section--ages .sec-head{margin-bottom:18px}
+.ages{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.age{position:relative;height:74px;border-radius:14px;display:flex;align-items:center;padding:0 22px;overflow:hidden;font-weight:500;font-size:16px;transition:transform .2s}
+.age:hover{transform:translateY(-3px)}
+.age .kid{position:absolute;right:14px;bottom:-6px;font-size:58px;line-height:1}
+.age--pink{background:var(--pink-soft);color:var(--pink-deep)}
+.age--green{background:var(--green-soft);color:#3b8f55}
+.age--blue{background:var(--blue-soft);color:var(--blue-deep)}
+.age--purple{background:var(--purple-soft);color:var(--purple-deep)}
+
+/* ---------- Target ---------- */
+.targets{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.target{position:relative;display:flex;align-items:stretch;border-radius:16px;overflow:hidden;min-height:92px}
+.target__body{padding:12px 18px;flex:1;position:relative;z-index:1}
+.target__title{display:flex;align-items:center;gap:10px;font-weight:500;color:var(--ink);font-size:14px}
+.target__title svg{width:26px;height:26px}
+.target p{font-size:11px;color:var(--muted);line-height:1.7;margin:2px 0 8px 36px}
+.target .more{margin-left:36px;padding:3px 12px 3px 16px;font-size:11px}
+.target__photo{width:42%;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%);mask-image:linear-gradient(90deg,transparent,#000 30%)}
+.target__photo img{width:100%;height:100%;object-fit:cover}
+.target__photo .photo-ph{font-size:52px;background:linear-gradient(135deg,#fff6ec,#fde8dc)}
+.target--blue{background:var(--blue-soft)}
+.target--blue .target__title svg{color:var(--blue)}
+.target--green{background:var(--green-soft)}
+.target--green .target__title svg{color:var(--green)}
+.target--green .more{border-color:var(--green);color:var(--green)}
+.target--green .more:hover{background:var(--green);color:#fff}
+.target--green .target__photo .photo-ph{background:linear-gradient(135deg,#eef8f0,#dff1f6)}
+
+/* ---------- Footer ---------- */
+.footer{position:relative;margin-top:30px;background:#fff}
+.footer__wave{display:block;width:100%;height:40px}
+.footer__inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:30px;padding:10px 24px 22px}
+.footer .logo__sun{width:40px;height:40px}
+.footer .logo__name{font-size:20px}
+.footer nav ul{display:flex;flex-wrap:wrap;gap:6px 30px;list-style:none;font-size:11px;color:var(--muted)}
+.footer nav a:hover{color:var(--blue)}
+.pagetop{margin-left:auto;display:flex;flex-direction:column;align-items:center;font-size:9px;color:var(--muted);letter-spacing:.05em}
+.pagetop svg{width:18px;height:18px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1100px){
+  .nav ul{gap:18px}
+  .nav a{font-size:12px}
+}
+@media (max-width:960px){
+  .nav{display:none}
+  .nav.is-open{display:block;position:absolute;top:100%;left:0;right:0;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+  .nav.is-open ul{flex-direction:column;gap:0;padding:8px 24px 16px}
+  .nav.is-open a{display:block;padding:12px 0;font-size:14px;border-bottom:1px solid var(--line)}
+  .nav.is-open a::after{display:none}
+  .menu-btn{display:grid;place-items:center;margin-left:auto}
+  .search-btn{margin-left:0}
+  .hero__inner{grid-template-columns:1fr;padding-bottom:70px}
+  .hero__visual{height:340px;order:-1}
+  .senses{grid-template-columns:repeat(2,1fr)}
+  .worries{grid-template-columns:repeat(3,1fr);row-gap:24px}
+  .play-grid{grid-template-columns:1fr}
+  .ages{grid-template-columns:repeat(2,1fr)}
+  .targets{grid-template-columns:1fr}
+  .footer__inner{flex-wrap:wrap}
+}
+@media (max-width:600px){
+  .container,.header__inner,.hero__inner,.footer__inner{padding-left:16px;padding-right:16px}
+  .logo__sun{width:42px;height:42px}
+  .logo__name{font-size:20px}
+  .logo__sub{font-size:9px}
+  .hero__note{font-size:14px;right:0;top:40px}
+  .hero__cloud,.hero__flowers{display:none}
+  .btn{min-width:0;flex:1}
+  .sec-head{flex-wrap:wrap}
+  .more--abs{position:static;margin:14px auto 0}
+  .sec-head .more{margin-left:0}
+  .senses{gap:14px}
+  .sense{padding:56px 12px 18px}
+  .worries{grid-template-columns:repeat(2,1fr)}
+  .fish-banner{min-height:190px}
+  .fish-banner .bubble-say{left:14px;width:110px;height:92px;font-size:16px}
+  .fish-banner .bubble-say b{font-size:21px}
+  .fish-banner .play-now{left:auto;right:14px}
+  .ages{grid-template-columns:1fr 1fr;gap:12px}
+  .age{font-size:14px;padding:0 14px}
+  .age .kid{font-size:44px}
+  .target{flex-direction:column}
+  .target__photo{width:100%;height:120px;-webkit-mask-image:none;mask-image:none}
+}
