@@ -1,7 +1,7 @@
 // 太陽ロゴ（再利用用シンボル）。<Logo> から <use href="#sun"> で参照する
 export default function SunSymbol() {
   return (
-    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+    <svg className="svg-defs" width="0" height="0" aria-hidden="true">
       <defs>
         <symbol id="sun" viewBox="0 0 64 64">
           <g stroke="#f7c325" strokeWidth="4" strokeLinecap="round">

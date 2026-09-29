@@ -36,7 +36,8 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .container{max-width:1080px;margin:0 auto;padding:0 24px}
 svg.lucide{stroke-width:2}
-.c-o{color:var(--orange)}.c-y{color:var(--yellow)}.c-g{color:var(--green)}.c-t{color:var(--teal)}.c-p{color:var(--pink)}.c-b{color:var(--blue)}
+.svg-defs{position:absolute}
+.c-o{color:var(--orange)}.c-y{color:var(--yellow)}.c-t{color:var(--teal)}.c-p{color:var(--pink)}.c-b{color:var(--blue)}
 
 /* 背景の水玉。位置・サイズ・色は各セクションで指定 */
 .dot{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;pointer-events:none}
